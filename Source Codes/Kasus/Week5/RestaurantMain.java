@@ -11,5 +11,8 @@ public class RestaurantMain
 		Restaurant.nextId();
 		menu.tambahMenuMakanan("Molen", 1_000, 20);
 		menu.tampilMenuMakanan();
+
+		menu.Pesan("Molen", 6);
+		menu.tampilMenuMakanan();
 	}
 }

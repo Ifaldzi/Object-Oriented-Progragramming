@@ -45,7 +45,7 @@ public class Restaurant
 
 	public void Pesan(String namaMakanan, int jumlah)
 	{
-		for(int i = 0;i<id;i++)
+		for(int i = 0;i<=id;i++)
 		{
 			if(namaMakanan.equals(menuMakanan[i].getNamaMakanan()))
 			{
