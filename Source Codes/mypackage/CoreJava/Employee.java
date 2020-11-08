@@ -19,6 +19,12 @@ public class Employee
 		salary = _salary;
 	}
 
+	public Employee()
+	{
+		name = "No name";
+		salary = 0;
+	}
+
 	/** <strong> this is getter for name </strong> */
 	public String getName()
 	{
