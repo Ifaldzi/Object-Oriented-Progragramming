@@ -58,4 +58,13 @@ public class Employee extends Person
         return e.salary == salary && e.yearStart == yearStart
                 && e.nationalInsuranceNumber.equals(nationalInsuranceNumber);
     }
+
+    @Override
+    public void print()
+    {
+        System.out.print("Employee: ");
+        super.print();
+        System.out.println("Salary= " + salary + " Year Start= " + yearStart
+                            + " National Insurance Number= " + nationalInsuranceNumber);
+    }
 }
