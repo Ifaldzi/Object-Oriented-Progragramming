@@ -1,3 +1,5 @@
+package Kasus.Week5;
+
 public class Itachi extends Rikudo
 {
 	private String KekkeiGenkai = "Susanoo";

@@ -1,4 +1,4 @@
-import mypackage.CoreJava.*;
+import mypackage.CoreJava.Employee;
 
 public class PackageTest
 {

@@ -2,22 +2,22 @@ public class EmployeeTestForStatic
 {
 	public static void main(String[] args)
 	{
-		Employee staff;
-		staff = new Employee("Roger", 80000);
+		EmployeeStatic staff;
+		staff = new EmployeeStatic("Roger", 80000);
 		staff.setId();
-		Employee staff2 = new Employee("Jon", 89934);
+		EmployeeStatic staff2 = new EmployeeStatic("Jon", 89934);
 		staff2.setId();
 		System.out.println(staff.nextId + " | " + staff2.nextId);
 	}
 }
-class Employee
+class EmployeeStatic
 {
 	private String name;
 	private double salary;
 	private int id;
 	public static int nextId = 1;
 
-	public Employee(String _name, double _salary)
+	public EmployeeStatic(String _name, double _salary)
 	{
 		name = _name;
 		salary = _salary;

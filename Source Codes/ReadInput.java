@@ -12,5 +12,6 @@ public class ReadInput
 		int age = in.nextInt();
 
 		System.out.println("Hello, " + name + " Next year, you'll be " + (age + 1));
+		in.close();
 	}
 }

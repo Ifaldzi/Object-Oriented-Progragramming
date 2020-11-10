@@ -1,3 +1,5 @@
+package Kasus.Week6;
+
 import java.util.*;
 
 class Manager extends Employee

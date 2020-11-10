@@ -1,3 +1,5 @@
+package Kasus.Week5;
+
 public class Sasuke extends Itachi
 {
 	String Dojutsu = "Sharingan";

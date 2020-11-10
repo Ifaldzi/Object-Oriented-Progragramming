@@ -2,9 +2,9 @@ public class EmployeeTestForMethodParam
 {
 	public static void main(String[] args)
 	{
-		Employee staff;
-		staff = new Employee("Roger", 80000);
-		Employee staff2 = new Employee("Jon", 89934);
+		EmployeePar staff;
+		staff = new EmployeePar("Roger", 80000);
+		EmployeePar staff2 = new EmployeePar("Jon", 89934);
 
 		staff.printEmployee();
 		staff2.printEmployee();		
@@ -13,21 +13,20 @@ public class EmployeeTestForMethodParam
 		staff2.printEmployee();
 
 	}
-		public static void swap(Employee x, Employee y)
+		public static void swap(EmployeePar x, EmployeePar y)
 		{
-			Employee temp = x;
+			EmployeePar temp = x;
 			x = y;
 			y = temp;
 		}
 }
-class Employee
+class EmployeePar
 {
 	private String name;
 	private double salary;
-	private int id;
 	public static int nextId = 1;
 
-	public Employee(String _name, double _salary)
+	public EmployeePar(String _name, double _salary)
 	{
 		name = _name;
 		salary = _salary;

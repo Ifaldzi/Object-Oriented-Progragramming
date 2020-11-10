@@ -1,3 +1,5 @@
+package Kasus.Week6;
+
 public class Shape
 {
 	private String color;

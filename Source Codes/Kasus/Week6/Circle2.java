@@ -1,3 +1,5 @@
+package Kasus.Week6;
+
 public class Circle2 extends Shape
 {
 	private double radius;

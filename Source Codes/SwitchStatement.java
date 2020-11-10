@@ -22,5 +22,6 @@ public class SwitchStatement
 			System.out.println("Your choice is wrong");
 			break;
 		}
+		in.close();
 	}
 }

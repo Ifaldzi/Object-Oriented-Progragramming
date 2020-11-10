@@ -2,22 +2,22 @@ public class EmployeeTestForOtherConstructor
 {
 	public static void main(String[] args)
 	{
-		Employee staff = new Employee(55550);
+		EmployeeOther staff = new EmployeeOther(55550);
 		staff.printEmployee();
 	}
 }
-class Employee
+class EmployeeOther
 {
 	private String name;
 	private double salary;
 
-	public Employee(String _name, double _salary)
+	public EmployeeOther(String _name, double _salary)
 	{
 		name = _name;
 		salary = _salary;
 	}
 
-	public Employee(double salary)
+	public EmployeeOther(double salary)
 	{
 		this("Bang", salary);
 	}

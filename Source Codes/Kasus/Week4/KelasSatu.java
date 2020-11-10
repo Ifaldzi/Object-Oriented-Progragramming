@@ -1,3 +1,5 @@
+package Kasus.Week4;
+
 class KelasSatu
 {
 	{

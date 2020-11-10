@@ -2,15 +2,15 @@ public class FinalInstance
 {
 	public static void main(String[] args) 
 	{
-		Employee e = new Employee();
+		EmployeeFin e = new EmployeeFin();
 		e.giveGoldStar();
 		e.printThis();
 	}
 }
-	class Employee
+	class EmployeeFin
 	{
 		private final StringBuilder evaluations;
-		public Employee()
+		public EmployeeFin()
 		{
 			evaluations = new StringBuilder();
 		}

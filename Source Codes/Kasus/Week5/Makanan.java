@@ -1,3 +1,5 @@
+package Kasus.Week5;
+
 public class Makanan
 {
 	// pindahin ke sini tapi jangan array

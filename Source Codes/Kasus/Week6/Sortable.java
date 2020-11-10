@@ -1,3 +1,5 @@
+package Kasus.Week6;
+
 abstract class Sortable
 {
 	public abstract int compare(Sortable b);

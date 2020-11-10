@@ -1,3 +1,5 @@
+package Kasus.Week5;
+
 public class Restaurant
 {
 	// ubah jadi objek makanan

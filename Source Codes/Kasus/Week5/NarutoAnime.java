@@ -1,3 +1,5 @@
+package Kasus.Week5;
+
 public class NarutoAnime
 {
 	public static void main(String[] args)

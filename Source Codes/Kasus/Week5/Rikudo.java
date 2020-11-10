@@ -1,3 +1,5 @@
+package Kasus.Week5;
+
 public class Rikudo
 {
 	protected String Dojutsu = "Rinnegan";
