@@ -10,7 +10,7 @@ public class PandemiMain {
    
     Manusia OrangKe_2 = new Manusia();
     OrangKe_2 = OrangKe_1.clone();
-    OrangKe_2.setCovid19(corona.clone());
+    // OrangKe_2.setCovid19(corona.clone());
     OrangKe_2.setImun(120);
    
     OrangKe_1.setStatusCovid19();

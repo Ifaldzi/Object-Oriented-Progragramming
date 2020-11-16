@@ -29,7 +29,9 @@ public class Manusia implements Cloneable
     {
         try 
         {
-            return (Manusia) super.clone();
+            Manusia clone = (Manusia) super.clone();
+            clone.corona = (Covid19) corona.clone();
+            return clone;
         } 
         catch (CloneNotSupportedException ex) 
         {
