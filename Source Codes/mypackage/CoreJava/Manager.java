@@ -1,6 +1,7 @@
 package mypackage.CoreJava;
 
 import java.util.*;
+// import java.util.Iterator;
 
 public class Manager extends OtherEmployee
 {
