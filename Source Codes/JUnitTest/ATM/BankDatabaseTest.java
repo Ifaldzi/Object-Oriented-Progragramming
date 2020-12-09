@@ -3,6 +3,7 @@ package JUnitTest.ATM;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.Test;
@@ -32,21 +33,14 @@ public class BankDatabaseTest
    {
        double availableBalance = bankDatabase.getAvailableBalance(12345);
        double totalBalance = bankDatabase.getTotalBalance(12345);
+
+       assertNotNull(bankDatabase);
+
        assertEquals("Available Balance for acount number 12345", 1000.0, availableBalance, 2);
        assertEquals("Total Balance for acount number 12345", 1200.0, totalBalance, 2);
        availableBalance = bankDatabase.getAvailableBalance(98765);
        totalBalance = bankDatabase.getTotalBalance(98765);
        assertEquals("Available Balance for acount number 98765", 200.0, availableBalance, 2);
        assertEquals("Total Balance for acount number 98765", 200.0, totalBalance, 2);
-
-       BankDatabase bank = bankDatabase;
-       assertSame(bankDatabase, bank);
-   }
-
-   @Test(expected = NullPointerException.class)
-   public void balanceInformationForInvalidAccountTest()
-   {
-       assertNull(bankDatabase.getAvailableBalance(123));
-       double totalBalance = bankDatabase.getTotalBalance(234);
    }
 }

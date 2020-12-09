@@ -77,11 +77,14 @@ public class TransactionTest {
         double availableBalance = bankDatabase.getAvailableBalance(12345);
         double totalBalance = bankDatabase.getTotalBalance(12345);
         double amount = 200;
-        assertEquals("Available Balance after withdraw for acount number 12345", 1000.0-amount, availableBalance, 2);
-        assertEquals("Total Balance after withdraw for acount number 12345", 1200.0-amount, totalBalance, 2);
+
+        assertNotNull("Bank Database is not null", bankDatabase);
+
+        assertEquals("Available Balance after withdrawal for acount number 12345", 1000.0-amount, availableBalance, 2);
+        assertEquals("Total Balance after withdrawal for acount number 12345", 1200.0-amount, totalBalance, 2);
         availableBalance = bankDatabase.getAvailableBalance(98765);
         totalBalance = bankDatabase.getTotalBalance(98765);
-        assertEquals("Available Balance after withdraw for acount number 98765", 200.0-amount, availableBalance, 2);
-        assertEquals("Total Balance after withdraw for acount number 98765", 200.0-amount, totalBalance, 2);
+        assertEquals("Available Balance after withdrawal for acount number 98765", 200.0-amount, availableBalance, 2);
+        assertEquals("Total Balance after withdrawal for acount number 98765", 200.0-amount, totalBalance, 2);
     }
 }
