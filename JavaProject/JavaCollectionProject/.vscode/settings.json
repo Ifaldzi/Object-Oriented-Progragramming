@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "C:\\Program Files\\Java\\org_junit_platform_junit-platform-console-standalone_1.6.0_junit-platform-console-standalone-1.6.0.jar",
+        "e:\\Java Libraries\\gson-2.8.2.jar"
+    ]
+}
