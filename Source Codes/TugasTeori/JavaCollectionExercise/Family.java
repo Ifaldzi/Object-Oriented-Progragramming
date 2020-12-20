@@ -21,7 +21,7 @@ public class Family
         temp.setBirthMonth(month);
         if(nieces.add(temp))
         {
-            this.updatePresentRecipient();
+            this.updatePresentList();
             return true;
         }
         return false;
@@ -33,7 +33,7 @@ public class Family
         temp.setName(name);
         if(uncles.add(temp))
         {
-            this.updatePresentRecipient();
+            this.updatePresentList();
             return true;
         }
         return false;
@@ -71,7 +71,7 @@ public class Family
         System.out.println(sortedUncles);
     }
 
-    private void updatePresentRecipient()
+    private void updatePresentList()
     {
         for (Uncle uncle : uncles) 
         {
