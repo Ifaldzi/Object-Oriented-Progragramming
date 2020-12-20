@@ -35,7 +35,14 @@ public class Uncle implements Comparable<Uncle>
 
     public void listPresents()
     {
-        System.out.println(presents);
+        System.out.println("=========================================");
+        System.out.println("List of presents from " + this.name + ":");
+        for (Map.Entry<Niece, String> entry : presents.entrySet()) 
+        {
+            System.out.print("- ");
+            System.out.print((entry.getValue()==null ? "No present has been chosen for " : entry.getValue() + " for "));
+            System.out.println(entry.getKey().getName());
+        }
     }
 
     @Override

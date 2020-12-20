@@ -84,9 +84,4 @@ public class Family
             }
         }
     }
-
-    private void updatePresentGiver()
-    {
-
-    }
 }

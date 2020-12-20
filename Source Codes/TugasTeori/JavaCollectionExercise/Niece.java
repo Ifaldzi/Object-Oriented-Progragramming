@@ -1,6 +1,5 @@
 package TugasTeori.JavaCollectionExercise;
 
-import java.time.Month;
 import java.util.*;
 
 public class Niece implements Comparable<Niece>
@@ -54,7 +53,14 @@ public class Niece implements Comparable<Niece>
 
     public void listPresents()
     {
-        System.out.println(this.presents);
+        System.out.println("=========================================");
+        System.out.println("List of presents for " + this.name + ":");
+        for (Map.Entry<Uncle, String> entry : presents.entrySet())
+        {
+            System.out.print("- ");
+            System.out.print(entry.getKey().getName());
+            System.out.println((entry.getValue()==null ? " hasn't given present" : " give " + entry.getValue()));
+        }
     }
 
     @Override

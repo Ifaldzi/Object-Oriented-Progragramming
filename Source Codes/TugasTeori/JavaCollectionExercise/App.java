@@ -15,7 +15,7 @@ public class App
         u.addPresent(family.findNiece("Santi"), "doll");
         family.addNiece("Icun", 12, 12);
         // u = family.findUncle("Ula");
-        // u.addPresent(family.findNiece("Ahmad"), "doll");
+        u.addPresent(family.findNiece("Ahmad"), "Game Console");
         // u.addPresent(family.findNiece("Santi"), "doll");
 
         family.listNieces();
