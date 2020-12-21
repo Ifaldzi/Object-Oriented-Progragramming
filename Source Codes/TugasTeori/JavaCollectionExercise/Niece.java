@@ -46,7 +46,11 @@ public class Niece implements Comparable<Niece>
 
     public int clearPresents()
     {
-        int totalPresent = presents.size();
+        int totalPresent = 0;
+        for (String present : presents.values())
+        {
+            if(present != null) totalPresent++;
+        }
         presents.clear();
         return totalPresent;
     }
