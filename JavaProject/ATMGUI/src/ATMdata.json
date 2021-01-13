@@ -1,29 +1,32 @@
 [
-    {
-        "bankName": "BRL",
-        "bankCode": 100,
-        "accountsList":[
-            {
-                "accountNumber": 999999,
-                "pin": 123456,
-                "totalBalance": 0
-            },
-            {
-                "accountNumber": 999999,
-                "pin": 123456,
-                "totalBalance": 0
-            }
-        ]
-    },
-    {
-        "bankName": "Marleyan's Bank",
-        "bankCode": 200,
-        "accountsList":[
-            {
-                "accountNumber": 123211,
-                "pin": 654321,
-                "totalBalance": 0
-            }
-        ]
-    }
+  {
+    "bankName": "BRL",
+    "bankCode": 100,
+    "accountsList": [
+      {
+        "accountNumber": 999999,
+        "pin": 123456,
+        "name": "Bambang",
+        "totalBalance": 1000.0
+      },
+      {
+        "accountNumber": 999999,
+        "pin": 123456,
+        "name": "Icun",
+        "totalBalance": 0.0
+      }
+    ]
+  },
+  {
+    "bankName": "Marleyan\u0027s Bank",
+    "bankCode": 200,
+    "accountsList": [
+      {
+        "accountNumber": 123456,
+        "pin": 123456,
+        "name": "Ifaldzi",
+        "totalBalance": 300000.0
+      }
+    ]
+  }
 ]

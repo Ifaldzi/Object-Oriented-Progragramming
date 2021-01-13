@@ -1,5 +1,6 @@
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -13,6 +14,11 @@ import javax.swing.JTextField;
  * @author Ifaldzi
  */
 public class ATMGUI extends javax.swing.JFrame {
+    private static final String LOGINMENU = "loginMenu";
+    private static final String MENU = "menu";
+    private static final String PENARIKAN = "penarikan";
+    private static final String INFOSALDO = "infoSaldo";
+    
     private boolean inputPin;
     private ATM atm;
     /**
@@ -33,6 +39,7 @@ public class ATMGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label200k1 = new javax.swing.JLabel();
         screen = new javax.swing.JPanel();
         loginMenu = new javax.swing.JPanel();
         titleLoginLabel = new javax.swing.JLabel();
@@ -43,7 +50,29 @@ public class ATMGUI extends javax.swing.JFrame {
         cancelLabel = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
         pinField = new javax.swing.JPasswordField();
+        menu = new javax.swing.JPanel();
+        titleMenu = new javax.swing.JLabel();
+        cancelMenuLabel = new javax.swing.JLabel();
+        penarikanLabel = new javax.swing.JLabel();
+        infoSaldoLabel = new javax.swing.JLabel();
+        transferLabel = new javax.swing.JLabel();
         penarikan = new javax.swing.JPanel();
+        titlePenarikan = new javax.swing.JLabel();
+        cancelPenarikanLabel = new javax.swing.JLabel();
+        label100k = new javax.swing.JLabel();
+        label200k = new javax.swing.JLabel();
+        label500k = new javax.swing.JLabel();
+        label1M = new javax.swing.JLabel();
+        labelNominal = new javax.swing.JLabel();
+        label2m = new javax.swing.JLabel();
+        label1setM = new javax.swing.JLabel();
+        infoSaldo = new javax.swing.JPanel();
+        cancelInfoSaldoLabel1 = new javax.swing.JLabel();
+        tittleInfoSaldoLabel = new javax.swing.JLabel();
+        saldoLabel = new javax.swing.JLabel();
+        totalSaldoLabel = new javax.swing.JLabel();
+        iyaInfoSaldoLabel = new javax.swing.JLabel();
+        otherTransactionLabel = new javax.swing.JLabel();
         numPad = new javax.swing.JPanel();
         num1 = new javax.swing.JButton();
         num2 = new javax.swing.JButton();
@@ -64,6 +93,9 @@ public class ATMGUI extends javax.swing.JFrame {
         leftChooseBtn2 = new javax.swing.JButton();
         leftChooseBtn3 = new javax.swing.JButton();
         leftChooseBtn4 = new javax.swing.JButton();
+
+        label200k1.setForeground(new java.awt.Color(255, 255, 255));
+        label200k1.setText("<< 200.000");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,23 +147,22 @@ public class ATMGUI extends javax.swing.JFrame {
         loginMenuLayout.setHorizontalGroup(
             loginMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginMenuLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(loginMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputPinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titleLoginLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inputAccNumLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
-                        .addContainerGap(100, Short.MAX_VALUE)
-                        .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginMenuLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(0, 90, Short.MAX_VALUE)
                         .addGroup(loginMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputPinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cancelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
                                 .addComponent(noAccTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)
-                                .addComponent(enterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(titleLoginLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(inputAccNumLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(enterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(loginMenuLayout.createSequentialGroup()
                 .addGap(132, 132, 132)
@@ -164,20 +195,220 @@ public class ATMGUI extends javax.swing.JFrame {
 
         screen.add(loginMenu, "loginMenu");
 
+        menu.setBackground(new java.awt.Color(0, 51, 255));
+
+        titleMenu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleMenu.setForeground(new java.awt.Color(255, 255, 255));
+        titleMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleMenu.setText("<html>PILIH TRANSAKSI YANG ANDA INGINKAN<br/>&ensp; TEKAN CANCEL UNTUK PEMBATALAN</html>");
+
+        cancelMenuLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelMenuLabel.setText("CANCEL >>");
+
+        penarikanLabel.setForeground(new java.awt.Color(255, 255, 255));
+        penarikanLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        penarikanLabel.setText("PENARIKAN >>");
+
+        infoSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        infoSaldoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        infoSaldoLabel.setText("INFO SALDO >>");
+
+        transferLabel.setForeground(new java.awt.Color(255, 255, 255));
+        transferLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        transferLabel.setText("TRANSFER >>");
+
+        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
+        menu.setLayout(menuLayout);
+        menuLayout.setHorizontalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(penarikanLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelMenuLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(infoSaldoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(transferLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        menuLayout.setVerticalGroup(
+            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(penarikanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(infoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(transferLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(cancelMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(menu, "menu");
+
         penarikan.setBackground(new java.awt.Color(0, 51, 255));
+
+        titlePenarikan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titlePenarikan.setForeground(new java.awt.Color(255, 255, 255));
+        titlePenarikan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titlePenarikan.setText("<html>PILIH TRANSAKSI YANG ANDA INGINKAN<br/>&ensp; TEKAN CANCEL UNTUK PEMBATALAN</html>");
+
+        cancelPenarikanLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelPenarikanLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelPenarikanLabel.setText("CANCEL >>");
+
+        label100k.setForeground(new java.awt.Color(255, 255, 255));
+        label100k.setText("<< 100.000");
+
+        label200k.setForeground(new java.awt.Color(255, 255, 255));
+        label200k.setText("<< 200.000");
+
+        label500k.setForeground(new java.awt.Color(255, 255, 255));
+        label500k.setText("<< 500.000");
+
+        label1M.setForeground(new java.awt.Color(255, 255, 255));
+        label1M.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label1M.setText("1.000.000>>");
+
+        labelNominal.setForeground(new java.awt.Color(255, 255, 255));
+        labelNominal.setText("<< NOMINAL LAIN");
+
+        label2m.setForeground(new java.awt.Color(255, 255, 255));
+        label2m.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label2m.setText("2.000.000 >>");
+
+        label1setM.setForeground(new java.awt.Color(255, 255, 255));
+        label1setM.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label1setM.setText("1.500.000>>");
 
         javax.swing.GroupLayout penarikanLayout = new javax.swing.GroupLayout(penarikan);
         penarikan.setLayout(penarikanLayout);
         penarikanLayout.setHorizontalGroup(
             penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGroup(penarikanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titlePenarikan, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, penarikanLayout.createSequentialGroup()
+                        .addComponent(labelNominal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelPenarikanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(penarikanLayout.createSequentialGroup()
+                        .addComponent(label500k, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label2m, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(penarikanLayout.createSequentialGroup()
+                        .addComponent(label200k, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label1setM, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(penarikanLayout.createSequentialGroup()
+                        .addComponent(label100k, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label1M, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         penarikanLayout.setVerticalGroup(
             penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(penarikanLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(titlePenarikan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label100k, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1M, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label200k, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1setM, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label500k, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label2m, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(penarikanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelPenarikanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNominal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
         screen.add(penarikan, "penarikan");
+
+        infoSaldo.setBackground(new java.awt.Color(0, 51, 255));
+
+        cancelInfoSaldoLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        cancelInfoSaldoLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelInfoSaldoLabel1.setText("TIDAK >>");
+
+        tittleInfoSaldoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tittleInfoSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        tittleInfoSaldoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tittleInfoSaldoLabel.setText("INFORMASI SALDO");
+
+        saldoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        saldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        saldoLabel.setText("SALDO: RP.");
+
+        totalSaldoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        totalSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totalSaldoLabel.setText("0");
+
+        iyaInfoSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        iyaInfoSaldoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        iyaInfoSaldoLabel.setText("IYA >>");
+
+        otherTransactionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        otherTransactionLabel.setForeground(new java.awt.Color(255, 255, 255));
+        otherTransactionLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        otherTransactionLabel.setText("TRANSAKSI LAGI?");
+
+        javax.swing.GroupLayout infoSaldoLayout = new javax.swing.GroupLayout(infoSaldo);
+        infoSaldo.setLayout(infoSaldoLayout);
+        infoSaldoLayout.setHorizontalGroup(
+            infoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(infoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tittleInfoSaldoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSaldoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelInfoSaldoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(infoSaldoLayout.createSequentialGroup()
+                        .addComponent(saldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(infoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSaldoLayout.createSequentialGroup()
+                                .addComponent(otherTransactionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(iyaInfoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(totalSaldoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        infoSaldoLayout.setVerticalGroup(
+            infoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tittleInfoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(infoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totalSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(infoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(iyaInfoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(otherTransactionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(cancelInfoSaldoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(infoSaldo, "infoSaldo");
 
         numPad.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -322,21 +553,51 @@ public class ATMGUI extends javax.swing.JFrame {
 
         rightChooseBtn2.setText("Pilih");
         rightChooseBtn2.setPreferredSize(new java.awt.Dimension(60, 25));
+        rightChooseBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightChooseBtn2ActionPerformed(evt);
+            }
+        });
 
         rightChooseBtn3.setText("Pilih");
         rightChooseBtn3.setPreferredSize(new java.awt.Dimension(60, 25));
+        rightChooseBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightChooseBtn3ActionPerformed(evt);
+            }
+        });
 
         rightChooseBtn4.setText("Pilih");
         rightChooseBtn4.setPreferredSize(new java.awt.Dimension(60, 25));
+        rightChooseBtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightChooseBtn4ActionPerformed(evt);
+            }
+        });
 
         leftChooseBtn1.setText("Pilih");
         leftChooseBtn1.setPreferredSize(new java.awt.Dimension(60, 25));
+        leftChooseBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftChooseBtn1ActionPerformed(evt);
+            }
+        });
 
         leftChooseBtn2.setText("Pilih");
         leftChooseBtn2.setPreferredSize(new java.awt.Dimension(60, 25));
+        leftChooseBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftChooseBtn2ActionPerformed(evt);
+            }
+        });
 
         leftChooseBtn3.setText("Pilih");
         leftChooseBtn3.setPreferredSize(new java.awt.Dimension(60, 25));
+        leftChooseBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftChooseBtn3ActionPerformed(evt);
+            }
+        });
 
         leftChooseBtn4.setText("Pilih");
         leftChooseBtn4.setPreferredSize(new java.awt.Dimension(60, 25));
@@ -347,8 +608,7 @@ public class ATMGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(numPad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(leftChooseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,7 +616,8 @@ public class ATMGUI extends javax.swing.JFrame {
                             .addComponent(leftChooseBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(leftChooseBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(screen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(screen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(numPad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rightChooseBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,25 +630,26 @@ public class ATMGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(screen, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(rightChooseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(rightChooseBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(rightChooseBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(rightChooseBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(leftChooseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(leftChooseBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(leftChooseBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(leftChooseBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(screen, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(92, 92, 92)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(leftChooseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(leftChooseBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(leftChooseBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(leftChooseBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rightChooseBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rightChooseBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rightChooseBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rightChooseBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addComponent(numPad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -442,12 +704,90 @@ public class ATMGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_num0ActionPerformed
 
     private void rightChooseBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightChooseBtn1ActionPerformed
-        if(pinField.getPassword().length == 0)
-            inputPin = true;
-        else
-            login();
+        switch(atm.getScreen()){
+            case LOGINMENU:
+                if(pinField.getPassword().length == 0)
+                    inputPin = true;
+                else
+                    login();
+            break;
+            case MENU:
+                changeScreen(PENARIKAN);
+            break;
+            case PENARIKAN:
+                performWithdrawal(1_000_000);
+            break;
+        }
     }//GEN-LAST:event_rightChooseBtn1ActionPerformed
 
+    private void rightChooseBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightChooseBtn4ActionPerformed
+        switch(atm.getScreen()){
+            case MENU:
+                atm.resetCurrentData();
+                logout();
+            break;
+            case PENARIKAN:
+                changeScreen(MENU);
+            break;
+            case INFOSALDO:
+                logout();
+            break;
+        }
+    }//GEN-LAST:event_rightChooseBtn4ActionPerformed
+
+    private void leftChooseBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftChooseBtn1ActionPerformed
+        switch(atm.getScreen()){
+            case PENARIKAN:
+                performWithdrawal(100000);
+            break;
+        }
+    }//GEN-LAST:event_leftChooseBtn1ActionPerformed
+
+    private void leftChooseBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftChooseBtn2ActionPerformed
+        switch(atm.getScreen()){
+            case PENARIKAN:
+                performWithdrawal(200000);
+            break;
+        }
+    }//GEN-LAST:event_leftChooseBtn2ActionPerformed
+
+    private void leftChooseBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftChooseBtn3ActionPerformed
+        switch(atm.getScreen()){
+            case PENARIKAN:
+                performWithdrawal(500_000);
+            break;
+        }
+    }//GEN-LAST:event_leftChooseBtn3ActionPerformed
+
+    private void rightChooseBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightChooseBtn2ActionPerformed
+        switch(atm.getScreen()){
+            case PENARIKAN:
+                performWithdrawal(1_500_000);
+            break;
+            case MENU:
+                showSaldo();
+            break;
+        }
+    }//GEN-LAST:event_rightChooseBtn2ActionPerformed
+
+    private void rightChooseBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightChooseBtn3ActionPerformed
+        switch(atm.getScreen()){
+            case PENARIKAN:
+                performWithdrawal(2_000_000);
+            break;
+            case INFOSALDO:
+                changeScreen(MENU);
+            break;
+        }
+    }//GEN-LAST:event_rightChooseBtn3ActionPerformed
+
+    private void performWithdrawal(double amount){
+        if(atm.performWithdrawal(amount))
+            JOptionPane.showMessageDialog(this, "PENARIKAN BERHASIL\nSILAHKAN AMBIL UANG ANDA");
+        else
+            JOptionPane.showMessageDialog(this, "PENARIKAN GAGAL");
+    }
+    
     private void addInput(String input){
         JTextField textField = new JTextField();
         if("loginMenu".equals(atm.getScreen()))
@@ -470,11 +810,36 @@ public class ATMGUI extends javax.swing.JFrame {
         int pin = Integer.parseInt(new String(pinChar));
         
         Account account = atm.findAccount(accountNumber);
-        CardLayout card = (CardLayout) screen.getLayout();
-        if(account.validatePin(pin)){
-            atm.setScreen("penarikan");
-            card.show(screen, "penarikan");
+        if(account != null){
+            if(account.validatePin(pin)){
+                changeScreen(MENU);
+            }
+            else{
+                //login failed bcs wrong pin
+            }
         }
+        else{
+            //login failed bcs no account found
+        }
+    }
+    
+    public void logout(){
+        noAccTxtField.setText("");
+        pinField.setText("");
+        inputPin = false;
+        changeScreen(LOGINMENU);
+    }
+    
+    public void showSaldo(){
+        String saldo = String.valueOf(atm.getCurrentAccount().getTotalBalance());
+        totalSaldoLabel.setText(saldo);
+        changeScreen(INFOSALDO);
+    }
+    
+    public void changeScreen(String screenName){
+        CardLayout card = (CardLayout) screen.getLayout();
+        atm.setScreen(screenName);
+        card.show(screen, screenName);
     }
 
     /**
@@ -513,17 +878,32 @@ public class ATMGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cancelInfoSaldoLabel1;
     private javax.swing.JLabel cancelLabel;
+    private javax.swing.JLabel cancelMenuLabel;
+    private javax.swing.JLabel cancelPenarikanLabel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel enterLabel;
     private javax.swing.JLabel infoLabel;
+    private javax.swing.JPanel infoSaldo;
+    private javax.swing.JLabel infoSaldoLabel;
     private javax.swing.JLabel inputAccNumLabel;
     private javax.swing.JLabel inputPinLabel;
+    private javax.swing.JLabel iyaInfoSaldoLabel;
+    private javax.swing.JLabel label100k;
+    private javax.swing.JLabel label1M;
+    private javax.swing.JLabel label1setM;
+    private javax.swing.JLabel label200k;
+    private javax.swing.JLabel label200k1;
+    private javax.swing.JLabel label2m;
+    private javax.swing.JLabel label500k;
+    private javax.swing.JLabel labelNominal;
     private javax.swing.JButton leftChooseBtn1;
     private javax.swing.JButton leftChooseBtn2;
     private javax.swing.JButton leftChooseBtn3;
     private javax.swing.JButton leftChooseBtn4;
     private javax.swing.JPanel loginMenu;
+    private javax.swing.JPanel menu;
     private javax.swing.JTextField noAccTxtField;
     private javax.swing.JButton num0;
     private javax.swing.JButton num1;
@@ -536,13 +916,21 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JButton num8;
     private javax.swing.JButton num9;
     private javax.swing.JPanel numPad;
+    private javax.swing.JLabel otherTransactionLabel;
     private javax.swing.JPanel penarikan;
+    private javax.swing.JLabel penarikanLabel;
     private javax.swing.JPasswordField pinField;
     private javax.swing.JButton rightChooseBtn1;
     private javax.swing.JButton rightChooseBtn2;
     private javax.swing.JButton rightChooseBtn3;
     private javax.swing.JButton rightChooseBtn4;
+    private javax.swing.JLabel saldoLabel;
     private javax.swing.JPanel screen;
     private javax.swing.JLabel titleLoginLabel;
+    private javax.swing.JLabel titleMenu;
+    private javax.swing.JLabel titlePenarikan;
+    private javax.swing.JLabel tittleInfoSaldoLabel;
+    private javax.swing.JLabel totalSaldoLabel;
+    private javax.swing.JLabel transferLabel;
     // End of variables declaration//GEN-END:variables
 }
