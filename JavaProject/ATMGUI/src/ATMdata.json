@@ -1,0 +1,29 @@
+[
+    {
+        "bankName": "BRL",
+        "bankCode": 100,
+        "accountsList":[
+            {
+                "accountNumber": 999999,
+                "pin": 123456,
+                "totalBalance": 0
+            },
+            {
+                "accountNumber": 999999,
+                "pin": 123456,
+                "totalBalance": 0
+            }
+        ]
+    },
+    {
+        "bankName": "Marleyan's Bank",
+        "bankCode": 200,
+        "accountsList":[
+            {
+                "accountNumber": 123211,
+                "pin": 654321,
+                "totalBalance": 0
+            }
+        ]
+    }
+]
