@@ -24,6 +24,7 @@ public class ATM {
     private String screen;
     private Bank currentBank;
     private Account currentAccount;
+    private Transaction currentTransaction;
     
     public ATM(){
         this.banksData = new ArrayList<>();
@@ -31,6 +32,11 @@ public class ATM {
         loadAtmData();
         this.currentAccount = null;
         this.currentBank = null;
+        this.currentTransaction = null;
+    }
+    
+    public ArrayList<Bank> getBanksData(){
+        return this.banksData;
     }
     
     public String getScreen(){
@@ -47,6 +53,10 @@ public class ATM {
     
     public Account getCurrentAccount(){
         return this.currentAccount;
+    }
+    
+    public Transaction getCurrentTransaction(){
+        return this.currentTransaction;
     }
     
     public Bank findBank(int bankCode){
@@ -81,6 +91,7 @@ public class ATM {
         return null;
     }
     
+    // this main method is for testing purpose
     public static void main(String[] args){
         ATM atm = new ATM();
         System.out.println(atm.findBank(100).findAccount(999999).getAccountNumber());
@@ -91,6 +102,7 @@ public class ATM {
     public void resetCurrentData(){
         this.currentAccount = null;
         this.currentBank = null;
+        this.currentTransaction = null;
     }
     
     public void updateAtmData(){
@@ -105,9 +117,16 @@ public class ATM {
         }
     }
     
-    public boolean performWithdrawal(double amount){
-        Withdrawal withdrawal = new Withdrawal(currentAccount, amount);
-        if(withdrawal.execute()){
+    public void createTransaction(double amount){
+        currentTransaction = new Withdrawal(currentAccount, amount);
+    }
+    
+    public void createTransaction(Account accountReceiver, double amount){
+        currentTransaction = new Transfer(currentAccount, accountReceiver, amount);
+    }
+    
+    public boolean performTransaction(){
+        if(currentTransaction.execute()){
             updateAtmData();
             return true;
         }

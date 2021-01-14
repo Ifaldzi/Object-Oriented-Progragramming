@@ -1,5 +1,7 @@
 
 import java.awt.CardLayout;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -18,6 +20,13 @@ public class ATMGUI extends javax.swing.JFrame {
     private static final String MENU = "menu";
     private static final String PENARIKAN = "penarikan";
     private static final String INFOSALDO = "infoSaldo";
+    private static final String TRANSFERDEST = "transferDest";
+    private static final String INPUTNOREKTRF = "inputNoRekTrf";
+    private static final String TRANSFERAMOUNT = "transferAmount";
+    private static final String TRANSFER_CONFIRMATION = "transferConfirmation";
+    private static final String SUCCESS_MENU = "successMenu";
+    private static final String TRANSFER_DIFFERENT_BANK = "trfDifferentBank";
+    private static final String KODE_BANK_MENU = "kodeBankMenu";
     
     private boolean inputPin;
     private ATM atm;
@@ -39,7 +48,6 @@ public class ATMGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label200k1 = new javax.swing.JLabel();
         screen = new javax.swing.JPanel();
         loginMenu = new javax.swing.JPanel();
         titleLoginLabel = new javax.swing.JLabel();
@@ -67,12 +75,60 @@ public class ATMGUI extends javax.swing.JFrame {
         label2m = new javax.swing.JLabel();
         label1setM = new javax.swing.JLabel();
         infoSaldo = new javax.swing.JPanel();
-        cancelInfoSaldoLabel1 = new javax.swing.JLabel();
+        cancelInfoSaldoLabel = new javax.swing.JLabel();
         tittleInfoSaldoLabel = new javax.swing.JLabel();
         saldoLabel = new javax.swing.JLabel();
         totalSaldoLabel = new javax.swing.JLabel();
         iyaInfoSaldoLabel = new javax.swing.JLabel();
         otherTransactionLabel = new javax.swing.JLabel();
+        transferDest = new javax.swing.JPanel();
+        titleTransferDestLabel = new javax.swing.JLabel();
+        cancelTransferLabel = new javax.swing.JLabel();
+        sameBankLabel = new javax.swing.JLabel();
+        differentBankLabel = new javax.swing.JLabel();
+        transferNoRek = new javax.swing.JPanel();
+        tittleTranferNoRekLabel = new javax.swing.JLabel();
+        noRekField = new javax.swing.JTextField();
+        cancelNoRekLabel = new javax.swing.JLabel();
+        lanjutkanNoRekLabel = new javax.swing.JLabel();
+        transferAmount = new javax.swing.JPanel();
+        titleTrfAmountLabel = new javax.swing.JLabel();
+        amountField = new javax.swing.JTextField();
+        currencyLabel = new javax.swing.JLabel();
+        cancelAmountTrfLabel = new javax.swing.JLabel();
+        lanjutkanAmountTrfLabel = new javax.swing.JLabel();
+        transferConfirmation = new javax.swing.JPanel();
+        tittleConfirmation = new javax.swing.JLabel();
+        dataTujuanLabel = new javax.swing.JLabel();
+        cancelConfirmationLabe = new javax.swing.JLabel();
+        yesConfirmationLabel = new javax.swing.JLabel();
+        processQuestionLabel = new javax.swing.JLabel();
+        dataLabel1 = new javax.swing.JLabel();
+        dataLabel2 = new javax.swing.JLabel();
+        dataLabel3 = new javax.swing.JLabel();
+        noAkunTujuanLabel = new javax.swing.JLabel();
+        namaTujuanLabel = new javax.swing.JLabel();
+        prefixJumlah = new javax.swing.JLabel();
+        jumlahLabel = new javax.swing.JLabel();
+        successMenu = new javax.swing.JPanel();
+        successLabel = new javax.swing.JLabel();
+        successMenuLabel = new javax.swing.JLabel();
+        successMenuLabel2 = new javax.swing.JLabel();
+        successMenuSaldoLabel = new javax.swing.JLabel();
+        cancelSuccessLabel = new javax.swing.JLabel();
+        yaSuccessLabel = new javax.swing.JLabel();
+        transaksiLainLabel = new javax.swing.JLabel();
+        transferNoRekDifBank = new javax.swing.JPanel();
+        tittleTranferNoRekLabel1 = new javax.swing.JLabel();
+        noRekDifBank = new javax.swing.JTextField();
+        cancelNoRekLabel1 = new javax.swing.JLabel();
+        lanjutkanNoRekLabel1 = new javax.swing.JLabel();
+        kodeBankViewLabel = new javax.swing.JLabel();
+        kodeBankMenu = new javax.swing.JPanel();
+        kodeBankTittle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        kodeBankText = new javax.swing.JTextArea();
+        lanjutkanKodeBankLabel = new javax.swing.JLabel();
         numPad = new javax.swing.JPanel();
         num1 = new javax.swing.JButton();
         num2 = new javax.swing.JButton();
@@ -93,9 +149,6 @@ public class ATMGUI extends javax.swing.JFrame {
         leftChooseBtn2 = new javax.swing.JButton();
         leftChooseBtn3 = new javax.swing.JButton();
         leftChooseBtn4 = new javax.swing.JButton();
-
-        label200k1.setForeground(new java.awt.Color(255, 255, 255));
-        label200k1.setText("<< 200.000");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +190,7 @@ public class ATMGUI extends javax.swing.JFrame {
         infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         infoLabel.setText("<html>Masukkan no.akun dan PIN anda<br/>Lalu tekan enter<br/>Tekan Cancel untuk keluar</html>");
 
+        pinField.setEditable(false);
         pinField.setBackground(new java.awt.Color(0, 51, 255));
         pinField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pinField.setForeground(new java.awt.Color(255, 255, 255));
@@ -342,9 +396,9 @@ public class ATMGUI extends javax.swing.JFrame {
 
         infoSaldo.setBackground(new java.awt.Color(0, 51, 255));
 
-        cancelInfoSaldoLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        cancelInfoSaldoLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cancelInfoSaldoLabel1.setText("TIDAK >>");
+        cancelInfoSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelInfoSaldoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelInfoSaldoLabel.setText("TIDAK >>");
 
         tittleInfoSaldoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tittleInfoSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -378,7 +432,7 @@ public class ATMGUI extends javax.swing.JFrame {
                     .addComponent(tittleInfoSaldoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSaldoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cancelInfoSaldoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cancelInfoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(infoSaldoLayout.createSequentialGroup()
                         .addComponent(saldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -404,11 +458,498 @@ public class ATMGUI extends javax.swing.JFrame {
                     .addComponent(iyaInfoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(otherTransactionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(cancelInfoSaldoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelInfoSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         screen.add(infoSaldo, "infoSaldo");
+
+        transferDest.setBackground(new java.awt.Color(0, 51, 255));
+
+        titleTransferDestLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleTransferDestLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleTransferDestLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleTransferDestLabel.setText("<html>PILIH TUJUAN TRANSFER YANG ANDA INGINKAN<br/>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;PILIH CANCEL UNTUK PEMBATALAN </html>");
+
+        cancelTransferLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelTransferLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelTransferLabel.setText("CANCEL >>");
+
+        sameBankLabel.setForeground(new java.awt.Color(255, 255, 255));
+        sameBankLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        sameBankLabel.setText("KE BANK YANG SAMA >>");
+
+        differentBankLabel.setForeground(new java.awt.Color(255, 255, 255));
+        differentBankLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        differentBankLabel.setText("KE BANK LAIN >>");
+
+        javax.swing.GroupLayout transferDestLayout = new javax.swing.GroupLayout(transferDest);
+        transferDest.setLayout(transferDestLayout);
+        transferDestLayout.setHorizontalGroup(
+            transferDestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferDestLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(transferDestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleTransferDestLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferDestLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(transferDestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cancelTransferLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sameBankLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(differentBankLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        transferDestLayout.setVerticalGroup(
+            transferDestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferDestLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleTransferDestLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(sameBankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(differentBankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(cancelTransferLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(transferDest, "transferDest");
+
+        transferNoRek.setBackground(new java.awt.Color(0, 51, 255));
+
+        tittleTranferNoRekLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tittleTranferNoRekLabel.setForeground(new java.awt.Color(255, 255, 255));
+        tittleTranferNoRekLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tittleTranferNoRekLabel.setText("<html>MASUKKAN NO. AKUN TUJUAN<br/>LALU PILIH LANJUTKAN<br/>PILIH CANCEL UNTUK PEMBATALAN</html>");
+
+        noRekField.setEditable(false);
+        noRekField.setBackground(new java.awt.Color(0, 51, 255));
+        noRekField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        noRekField.setForeground(new java.awt.Color(255, 255, 255));
+        noRekField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        cancelNoRekLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelNoRekLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelNoRekLabel.setText("CANCEL >>");
+
+        lanjutkanNoRekLabel.setForeground(new java.awt.Color(255, 255, 255));
+        lanjutkanNoRekLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lanjutkanNoRekLabel.setText("LANJUTKAN >>");
+
+        javax.swing.GroupLayout transferNoRekLayout = new javax.swing.GroupLayout(transferNoRek);
+        transferNoRek.setLayout(transferNoRekLayout);
+        transferNoRekLayout.setHorizontalGroup(
+            transferNoRekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferNoRekLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(noRekField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
+            .addGroup(transferNoRekLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(transferNoRekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tittleTranferNoRekLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferNoRekLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(transferNoRekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cancelNoRekLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lanjutkanNoRekLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+        transferNoRekLayout.setVerticalGroup(
+            transferNoRekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferNoRekLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tittleTranferNoRekLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(noRekField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(lanjutkanNoRekLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cancelNoRekLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(transferNoRek, "inputNoRekTrf");
+
+        transferAmount.setBackground(new java.awt.Color(0, 51, 255));
+
+        titleTrfAmountLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleTrfAmountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleTrfAmountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleTrfAmountLabel.setText("<html>MASUKKAN TOTAL NOMINAL YANG AKAN DIKIRIMKAN<br/>LALU PILIH LANJUTKAN<br/>PILIH CANCEL UNTUK PEMBATALAN</html>");
+
+        amountField.setEditable(false);
+        amountField.setBackground(new java.awt.Color(0, 51, 255));
+        amountField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        amountField.setForeground(new java.awt.Color(255, 255, 255));
+        amountField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        currencyLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        currencyLabel.setForeground(new java.awt.Color(255, 255, 255));
+        currencyLabel.setText("Rp. ");
+
+        cancelAmountTrfLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelAmountTrfLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelAmountTrfLabel.setText("CANCEL >>");
+
+        lanjutkanAmountTrfLabel.setForeground(new java.awt.Color(255, 255, 255));
+        lanjutkanAmountTrfLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lanjutkanAmountTrfLabel.setText("LANJUTKAN >>");
+
+        javax.swing.GroupLayout transferAmountLayout = new javax.swing.GroupLayout(transferAmount);
+        transferAmount.setLayout(transferAmountLayout);
+        transferAmountLayout.setHorizontalGroup(
+            transferAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferAmountLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(transferAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(transferAmountLayout.createSequentialGroup()
+                        .addComponent(titleTrfAmountLabel)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferAmountLayout.createSequentialGroup()
+                        .addGap(0, 42, Short.MAX_VALUE)
+                        .addGroup(transferAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferAmountLayout.createSequentialGroup()
+                                .addComponent(currencyLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferAmountLayout.createSequentialGroup()
+                                .addComponent(cancelAmountTrfLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferAmountLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lanjutkanAmountTrfLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        transferAmountLayout.setVerticalGroup(
+            transferAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferAmountLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleTrfAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addGroup(transferAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currencyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(lanjutkanAmountTrfLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cancelAmountTrfLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(transferAmount, "transferAmount");
+
+        transferConfirmation.setBackground(new java.awt.Color(0, 51, 255));
+
+        tittleConfirmation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tittleConfirmation.setForeground(new java.awt.Color(255, 255, 255));
+        tittleConfirmation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tittleConfirmation.setText("<html>KONFIRMASI TRANSAKSI</html>");
+
+        dataTujuanLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dataTujuanLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dataTujuanLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dataTujuanLabel.setText("DATA TUJUAN TRANFER");
+
+        cancelConfirmationLabe.setForeground(new java.awt.Color(255, 255, 255));
+        cancelConfirmationLabe.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelConfirmationLabe.setText("TIDAK >>");
+
+        yesConfirmationLabel.setForeground(new java.awt.Color(255, 255, 255));
+        yesConfirmationLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        yesConfirmationLabel.setText("YA >>");
+
+        processQuestionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        processQuestionLabel.setForeground(new java.awt.Color(255, 255, 255));
+        processQuestionLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        processQuestionLabel.setText("PROSES TRANSFER?");
+
+        dataLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dataLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        dataLabel1.setText("NO AKUN :");
+
+        dataLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dataLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        dataLabel2.setText("NAMA : ");
+
+        dataLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dataLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        dataLabel3.setText("JUMLAH : ");
+
+        noAkunTujuanLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        noAkunTujuanLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        namaTujuanLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        namaTujuanLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        prefixJumlah.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        prefixJumlah.setForeground(new java.awt.Color(255, 255, 255));
+        prefixJumlah.setText("Rp.");
+
+        jumlahLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jumlahLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout transferConfirmationLayout = new javax.swing.GroupLayout(transferConfirmation);
+        transferConfirmation.setLayout(transferConfirmationLayout);
+        transferConfirmationLayout.setHorizontalGroup(
+            transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferConfirmationLayout.createSequentialGroup()
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(transferConfirmationLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tittleConfirmation)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferConfirmationLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cancelConfirmationLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dataTujuanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferConfirmationLayout.createSequentialGroup()
+                                .addGap(0, 156, Short.MAX_VALUE)
+                                .addComponent(processQuestionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(yesConfirmationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(transferConfirmationLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(transferConfirmationLayout.createSequentialGroup()
+                                .addComponent(dataLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(noAkunTujuanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(transferConfirmationLayout.createSequentialGroup()
+                                .addComponent(dataLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(prefixJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jumlahLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(transferConfirmationLayout.createSequentialGroup()
+                                .addComponent(dataLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(namaTujuanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        transferConfirmationLayout.setVerticalGroup(
+            transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferConfirmationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tittleConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dataTujuanLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noAkunTujuanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaTujuanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prefixJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jumlahLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yesConfirmationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processQuestionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(cancelConfirmationLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(transferConfirmation, "transferConfirmation");
+
+        successMenu.setBackground(new java.awt.Color(0, 51, 255));
+        successMenu.setForeground(new java.awt.Color(255, 255, 255));
+
+        successLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        successLabel.setForeground(new java.awt.Color(255, 255, 255));
+        successLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        successLabel.setText("TRANSAKSI BERHASIL");
+
+        successMenuLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        successMenuLabel.setForeground(new java.awt.Color(255, 255, 255));
+        successMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        successMenuLabel.setText("INFO SALDO ANDA");
+
+        successMenuLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        successMenuLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        successMenuLabel2.setText("Rp.");
+
+        successMenuSaldoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        successMenuSaldoLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        cancelSuccessLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cancelSuccessLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelSuccessLabel.setText("TIDAK >>");
+
+        yaSuccessLabel.setForeground(new java.awt.Color(255, 255, 255));
+        yaSuccessLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        yaSuccessLabel.setText("YA >>");
+
+        transaksiLainLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        transaksiLainLabel.setForeground(new java.awt.Color(255, 255, 255));
+        transaksiLainLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        transaksiLainLabel.setText("TRANSAKSI LAINNYA?");
+
+        javax.swing.GroupLayout successMenuLayout = new javax.swing.GroupLayout(successMenu);
+        successMenu.setLayout(successMenuLayout);
+        successMenuLayout.setHorizontalGroup(
+            successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(successMenuLayout.createSequentialGroup()
+                .addGroup(successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, successMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(successMenuLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(successLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(successMenuLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(successMenuLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(successMenuSaldoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, successMenuLayout.createSequentialGroup()
+                        .addGap(0, 143, Short.MAX_VALUE)
+                        .addGroup(successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cancelSuccessLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, successMenuLayout.createSequentialGroup()
+                                .addComponent(transaksiLainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(yaSuccessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+        successMenuLayout.setVerticalGroup(
+            successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(successMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(successLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(successMenuLabel)
+                .addGap(18, 18, 18)
+                .addGroup(successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(successMenuLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(successMenuSaldoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(successMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yaSuccessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transaksiLainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(cancelSuccessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(successMenu, "successMenu");
+
+        transferNoRekDifBank.setBackground(new java.awt.Color(0, 51, 255));
+
+        tittleTranferNoRekLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tittleTranferNoRekLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        tittleTranferNoRekLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tittleTranferNoRekLabel1.setText("<html>MASUKKAN KODE BANK DIIKUTI NO. AKUN TUJUAN<br/>LALU PILIH LANJUTKAN<br/>PILIH CANCEL UNTUK PEMBATALAN</html>");
+
+        noRekDifBank.setEditable(false);
+        noRekDifBank.setBackground(new java.awt.Color(0, 51, 255));
+        noRekDifBank.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        noRekDifBank.setForeground(new java.awt.Color(255, 255, 255));
+        noRekDifBank.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        cancelNoRekLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        cancelNoRekLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelNoRekLabel1.setText("CANCEL >>");
+
+        lanjutkanNoRekLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        lanjutkanNoRekLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lanjutkanNoRekLabel1.setText("LANJUTKAN >>");
+
+        kodeBankViewLabel.setForeground(new java.awt.Color(255, 255, 255));
+        kodeBankViewLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kodeBankViewLabel.setText("<< LIHAT LIST KODE BANK");
+
+        javax.swing.GroupLayout transferNoRekDifBankLayout = new javax.swing.GroupLayout(transferNoRekDifBank);
+        transferNoRekDifBank.setLayout(transferNoRekDifBankLayout);
+        transferNoRekDifBankLayout.setHorizontalGroup(
+            transferNoRekDifBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferNoRekDifBankLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(noRekDifBank, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
+            .addGroup(transferNoRekDifBankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(transferNoRekDifBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tittleTranferNoRekLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferNoRekDifBankLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lanjutkanNoRekLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferNoRekDifBankLayout.createSequentialGroup()
+                        .addComponent(kodeBankViewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelNoRekLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        transferNoRekDifBankLayout.setVerticalGroup(
+            transferNoRekDifBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferNoRekDifBankLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tittleTranferNoRekLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(noRekDifBank, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(lanjutkanNoRekLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(transferNoRekDifBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelNoRekLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kodeBankViewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        screen.add(transferNoRekDifBank, "trfDifferentBank");
+
+        kodeBankMenu.setBackground(new java.awt.Color(0, 51, 255));
+
+        kodeBankTittle.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        kodeBankTittle.setForeground(new java.awt.Color(255, 255, 255));
+        kodeBankTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kodeBankTittle.setText("DAFTAR KODE BANK");
+
+        jScrollPane1.setBackground(new java.awt.Color(0, 51, 255));
+
+        kodeBankText.setBackground(new java.awt.Color(0, 51, 255));
+        kodeBankText.setColumns(20);
+        kodeBankText.setForeground(new java.awt.Color(255, 255, 255));
+        kodeBankText.setRows(5);
+        jScrollPane1.setViewportView(kodeBankText);
+
+        lanjutkanKodeBankLabel.setForeground(new java.awt.Color(255, 255, 255));
+        lanjutkanKodeBankLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lanjutkanKodeBankLabel.setText("LANJUTKAN >>");
+
+        javax.swing.GroupLayout kodeBankMenuLayout = new javax.swing.GroupLayout(kodeBankMenu);
+        kodeBankMenu.setLayout(kodeBankMenuLayout);
+        kodeBankMenuLayout.setHorizontalGroup(
+            kodeBankMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kodeBankMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(kodeBankMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kodeBankTittle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kodeBankMenuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lanjutkanKodeBankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        kodeBankMenuLayout.setVerticalGroup(
+            kodeBankMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kodeBankMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(kodeBankTittle, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lanjutkanKodeBankLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        screen.add(kodeBankMenu, "kodeBankMenu");
 
         numPad.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -601,6 +1142,11 @@ public class ATMGUI extends javax.swing.JFrame {
 
         leftChooseBtn4.setText("Pilih");
         leftChooseBtn4.setPreferredSize(new java.awt.Dimension(60, 25));
+        leftChooseBtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftChooseBtn4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -717,13 +1263,15 @@ public class ATMGUI extends javax.swing.JFrame {
             case PENARIKAN:
                 performWithdrawal(1_000_000);
             break;
+            case TRANSFERDEST:
+                changeScreen(INPUTNOREKTRF);
+            break;
         }
     }//GEN-LAST:event_rightChooseBtn1ActionPerformed
 
     private void rightChooseBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightChooseBtn4ActionPerformed
         switch(atm.getScreen()){
             case MENU:
-                atm.resetCurrentData();
                 logout();
             break;
             case PENARIKAN:
@@ -731,6 +1279,32 @@ public class ATMGUI extends javax.swing.JFrame {
             break;
             case INFOSALDO:
                 logout();
+            break;
+            case TRANSFERDEST:
+                resetTextField();
+                changeScreen(MENU);
+            break;
+            case INPUTNOREKTRF:
+                resetTextField();
+                changeScreen(MENU);
+            break;
+            case TRANSFERAMOUNT:
+                resetTextField();
+                changeScreen(MENU);
+            break;
+            case TRANSFER_CONFIRMATION:
+                resetTextField();
+                changeScreen(MENU);
+            break;
+            case SUCCESS_MENU:
+                logout();
+            break;
+            case KODE_BANK_MENU:
+                changeScreen(TRANSFER_DIFFERENT_BANK);
+            break;
+            case TRANSFER_DIFFERENT_BANK:
+                resetTextField();
+                changeScreen(MENU);
             break;
         }
     }//GEN-LAST:event_rightChooseBtn4ActionPerformed
@@ -767,6 +1341,9 @@ public class ATMGUI extends javax.swing.JFrame {
             case MENU:
                 showSaldo();
             break;
+            case TRANSFERDEST:
+                changeScreen(TRANSFER_DIFFERENT_BANK);
+            break;
         }
     }//GEN-LAST:event_rightChooseBtn2ActionPerformed
 
@@ -778,11 +1355,70 @@ public class ATMGUI extends javax.swing.JFrame {
             case INFOSALDO:
                 changeScreen(MENU);
             break;
+            case MENU:
+                changeScreen(TRANSFERDEST);
+            break;
+            case INPUTNOREKTRF:
+                changeScreen(TRANSFERAMOUNT);
+            break;
+            case TRANSFERAMOUNT:
+                showDataTransfer();
+                changeScreen(TRANSFER_CONFIRMATION);
+            break;
+            case TRANSFER_CONFIRMATION:
+                transfer();
+            break;
+            case SUCCESS_MENU:
+                resetTextField();
+                changeScreen(MENU);
+            break;
         }
     }//GEN-LAST:event_rightChooseBtn3ActionPerformed
 
+    private void leftChooseBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftChooseBtn4ActionPerformed
+        switch(atm.getScreen()){
+            case TRANSFER_DIFFERENT_BANK:
+                showListBank();
+            break;
+        }
+    }//GEN-LAST:event_leftChooseBtn4ActionPerformed
+
+    private void showListBank(){
+        ArrayList<Bank> banks = atm.getBanksData();
+        String text = new String("");
+        for(int i=0;i<banks.size();i+=2){
+            text += banks.get(i).getBankName() + " " + String.valueOf(banks.get(i).getBankCode());
+            text += "\t\t";
+            if(i+1 <= banks.size())
+                text += banks.get(i+1).getBankName() + " " + String.valueOf(banks.get(i+1).getBankCode());
+            text += "\n";
+        }
+        kodeBankText.setText(text);
+        changeScreen(KODE_BANK_MENU);
+    }
+    
+    private void transfer(){
+        int accountNumberReceiver = Integer.parseInt(noRekField.getText());
+        double amount = Double.parseDouble(amountField.getText());
+        atm.createTransaction(atm.getCurrentBank().findAccount(accountNumberReceiver), amount);
+        if(atm.performTransaction()){
+            String saldo = getDoubleAsText(atm.getCurrentAccount().getTotalBalance());
+            successMenuSaldoLabel.setText(saldo);
+            changeScreen(SUCCESS_MENU);
+        }
+    }
+    
+    private void showDataTransfer(){
+        noAkunTujuanLabel.setText(noRekField.getText());
+        Account accountReceiver = atm.getCurrentBank().findAccount(Integer.parseInt(noRekField.getText()));
+        String name = accountReceiver == null ? "" : accountReceiver.getName();
+        namaTujuanLabel.setText(name);
+        jumlahLabel.setText(amountField.getText());
+    }
+    
     private void performWithdrawal(double amount){
-        if(atm.performWithdrawal(amount))
+        atm.createTransaction(amount);
+        if(atm.performTransaction())
             JOptionPane.showMessageDialog(this, "PENARIKAN BERHASIL\nSILAHKAN AMBIL UANG ANDA");
         else
             JOptionPane.showMessageDialog(this, "PENARIKAN GAGAL");
@@ -790,11 +1426,23 @@ public class ATMGUI extends javax.swing.JFrame {
     
     private void addInput(String input){
         JTextField textField = new JTextField();
-        if("loginMenu".equals(atm.getScreen()))
-            if(!inputPin)
-                textField = noAccTxtField;
-            else
-                textField = pinField;
+        switch(atm.getScreen()){
+            case LOGINMENU:
+                if(!inputPin)
+                    textField = noAccTxtField;
+                else
+                    textField = pinField;
+            break;
+            case INPUTNOREKTRF:
+                textField = noRekField;
+            break;
+            case TRANSFERAMOUNT:
+                textField = amountField;
+            break;
+            case TRANSFER_DIFFERENT_BANK:
+                textField = noRekDifBank;
+            break;
+        }
         String text = textField.getText();
         if(!input.equals("Delete"))
             text += input;
@@ -824,16 +1472,28 @@ public class ATMGUI extends javax.swing.JFrame {
     }
     
     public void logout(){
-        noAccTxtField.setText("");
-        pinField.setText("");
+        resetTextField();
+        atm.resetCurrentData();
         inputPin = false;
         changeScreen(LOGINMENU);
     }
     
+    public void resetTextField(){
+        noAccTxtField.setText("");
+        pinField.setText("");
+        noRekField.setText("");
+        amountField.setText("");
+    }
+    
     public void showSaldo(){
-        String saldo = String.valueOf(atm.getCurrentAccount().getTotalBalance());
+        String saldo = getDoubleAsText((atm.getCurrentAccount().getTotalBalance()));
         totalSaldoLabel.setText(saldo);
         changeScreen(INFOSALDO);
+    }
+    
+    public String getDoubleAsText(double val){
+        DecimalFormat df = new DecimalFormat("###,###,###.00");
+        return df.format(val);
     }
     
     public void changeScreen(String screenName){
@@ -878,11 +1538,24 @@ public class ATMGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cancelInfoSaldoLabel1;
+    private javax.swing.JTextField amountField;
+    private javax.swing.JLabel cancelAmountTrfLabel;
+    private javax.swing.JLabel cancelConfirmationLabe;
+    private javax.swing.JLabel cancelInfoSaldoLabel;
     private javax.swing.JLabel cancelLabel;
     private javax.swing.JLabel cancelMenuLabel;
+    private javax.swing.JLabel cancelNoRekLabel;
+    private javax.swing.JLabel cancelNoRekLabel1;
     private javax.swing.JLabel cancelPenarikanLabel;
+    private javax.swing.JLabel cancelSuccessLabel;
+    private javax.swing.JLabel cancelTransferLabel;
+    private javax.swing.JLabel currencyLabel;
+    private javax.swing.JLabel dataLabel1;
+    private javax.swing.JLabel dataLabel2;
+    private javax.swing.JLabel dataLabel3;
+    private javax.swing.JLabel dataTujuanLabel;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel differentBankLabel;
     private javax.swing.JLabel enterLabel;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JPanel infoSaldo;
@@ -890,21 +1563,34 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JLabel inputAccNumLabel;
     private javax.swing.JLabel inputPinLabel;
     private javax.swing.JLabel iyaInfoSaldoLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jumlahLabel;
+    private javax.swing.JPanel kodeBankMenu;
+    private javax.swing.JTextArea kodeBankText;
+    private javax.swing.JLabel kodeBankTittle;
+    private javax.swing.JLabel kodeBankViewLabel;
     private javax.swing.JLabel label100k;
     private javax.swing.JLabel label1M;
     private javax.swing.JLabel label1setM;
     private javax.swing.JLabel label200k;
-    private javax.swing.JLabel label200k1;
     private javax.swing.JLabel label2m;
     private javax.swing.JLabel label500k;
     private javax.swing.JLabel labelNominal;
+    private javax.swing.JLabel lanjutkanAmountTrfLabel;
+    private javax.swing.JLabel lanjutkanKodeBankLabel;
+    private javax.swing.JLabel lanjutkanNoRekLabel;
+    private javax.swing.JLabel lanjutkanNoRekLabel1;
     private javax.swing.JButton leftChooseBtn1;
     private javax.swing.JButton leftChooseBtn2;
     private javax.swing.JButton leftChooseBtn3;
     private javax.swing.JButton leftChooseBtn4;
     private javax.swing.JPanel loginMenu;
     private javax.swing.JPanel menu;
+    private javax.swing.JLabel namaTujuanLabel;
     private javax.swing.JTextField noAccTxtField;
+    private javax.swing.JLabel noAkunTujuanLabel;
+    private javax.swing.JTextField noRekDifBank;
+    private javax.swing.JTextField noRekField;
     private javax.swing.JButton num0;
     private javax.swing.JButton num1;
     private javax.swing.JButton num2;
@@ -920,17 +1606,38 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JPanel penarikan;
     private javax.swing.JLabel penarikanLabel;
     private javax.swing.JPasswordField pinField;
+    private javax.swing.JLabel prefixJumlah;
+    private javax.swing.JLabel processQuestionLabel;
     private javax.swing.JButton rightChooseBtn1;
     private javax.swing.JButton rightChooseBtn2;
     private javax.swing.JButton rightChooseBtn3;
     private javax.swing.JButton rightChooseBtn4;
     private javax.swing.JLabel saldoLabel;
+    private javax.swing.JLabel sameBankLabel;
     private javax.swing.JPanel screen;
+    private javax.swing.JLabel successLabel;
+    private javax.swing.JPanel successMenu;
+    private javax.swing.JLabel successMenuLabel;
+    private javax.swing.JLabel successMenuLabel2;
+    private javax.swing.JLabel successMenuSaldoLabel;
     private javax.swing.JLabel titleLoginLabel;
     private javax.swing.JLabel titleMenu;
     private javax.swing.JLabel titlePenarikan;
+    private javax.swing.JLabel titleTransferDestLabel;
+    private javax.swing.JLabel titleTrfAmountLabel;
+    private javax.swing.JLabel tittleConfirmation;
     private javax.swing.JLabel tittleInfoSaldoLabel;
+    private javax.swing.JLabel tittleTranferNoRekLabel;
+    private javax.swing.JLabel tittleTranferNoRekLabel1;
     private javax.swing.JLabel totalSaldoLabel;
+    private javax.swing.JLabel transaksiLainLabel;
+    private javax.swing.JPanel transferAmount;
+    private javax.swing.JPanel transferConfirmation;
+    private javax.swing.JPanel transferDest;
     private javax.swing.JLabel transferLabel;
+    private javax.swing.JPanel transferNoRek;
+    private javax.swing.JPanel transferNoRekDifBank;
+    private javax.swing.JLabel yaSuccessLabel;
+    private javax.swing.JLabel yesConfirmationLabel;
     // End of variables declaration//GEN-END:variables
 }

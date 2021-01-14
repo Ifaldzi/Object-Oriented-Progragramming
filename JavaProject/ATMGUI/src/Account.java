@@ -16,7 +16,7 @@ public class Account {
     }
     
     public String getName(){
-        return this.getName();
+        return this.name;
     }
     
     public double getTotalBalance(){

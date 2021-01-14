@@ -7,13 +7,13 @@
         "accountNumber": 999999,
         "pin": 123456,
         "name": "Bambang",
-        "totalBalance": 1000.0
+        "totalBalance": 9650000.0
       },
       {
-        "accountNumber": 999999,
+        "accountNumber": 888888,
         "pin": 123456,
         "name": "Icun",
-        "totalBalance": 0.0
+        "totalBalance": 350000.0
       }
     ]
   },
