@@ -27,6 +27,7 @@ public class ATMGUI extends javax.swing.JFrame {
     private static final String SUCCESS_MENU = "successMenu";
     private static final String TRANSFER_DIFFERENT_BANK = "trfDifferentBank";
     private static final String KODE_BANK_MENU = "kodeBankMenu";
+    private static final String WITHDRAWAL_AMOUNT = "withdrawalAmount";
     
     private boolean inputPin;
     private ATM atm;
@@ -110,6 +111,8 @@ public class ATMGUI extends javax.swing.JFrame {
         namaTujuanLabel = new javax.swing.JLabel();
         prefixJumlah = new javax.swing.JLabel();
         jumlahLabel = new javax.swing.JLabel();
+        dataLabel4 = new javax.swing.JLabel();
+        bankNameField = new javax.swing.JLabel();
         successMenu = new javax.swing.JPanel();
         successLabel = new javax.swing.JLabel();
         successMenuLabel = new javax.swing.JLabel();
@@ -129,6 +132,12 @@ public class ATMGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         kodeBankText = new javax.swing.JTextArea();
         lanjutkanKodeBankLabel = new javax.swing.JLabel();
+        withdrawalAmount = new javax.swing.JPanel();
+        titleTrfAmountLabel1 = new javax.swing.JLabel();
+        withdrawalAmountField = new javax.swing.JTextField();
+        currencyLabel1 = new javax.swing.JLabel();
+        cancelAmountTrfLabel1 = new javax.swing.JLabel();
+        lanjutkanAmountTrfLabel1 = new javax.swing.JLabel();
         numPad = new javax.swing.JPanel();
         num1 = new javax.swing.JButton();
         num2 = new javax.swing.JButton();
@@ -187,8 +196,8 @@ public class ATMGUI extends javax.swing.JFrame {
         cancelLabel.setText("CANCEL >>");
 
         infoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoLabel.setText("<html>Masukkan no.akun dan PIN anda<br/>Lalu tekan enter<br/>Tekan Cancel untuk keluar</html>");
+        infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        infoLabel.setText("<html>Masukkan no.akun, Lalu tekan enter<br/>Lalu Masukkan PIN Anda, Lalu tekan enter<br/>Tekan Cancel untuk keluar</html>");
 
         pinField.setEditable(false);
         pinField.setBackground(new java.awt.Color(0, 51, 255));
@@ -207,19 +216,17 @@ public class ATMGUI extends javax.swing.JFrame {
                     .addComponent(titleLoginLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputAccNumLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
-                        .addGap(0, 90, Short.MAX_VALUE)
-                        .addGroup(loginMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
-                                .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cancelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
-                                .addComponent(noAccTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(enterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(noAccTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(enterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginMenuLayout.createSequentialGroup()
+                        .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(loginMenuLayout.createSequentialGroup()
-                .addGap(132, 132, 132)
+                .addGap(129, 129, 129)
                 .addComponent(pinField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -232,8 +239,8 @@ public class ATMGUI extends javax.swing.JFrame {
                 .addComponent(inputAccNumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(loginMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(noAccTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(enterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noAccTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(inputPinLabel)
                 .addGap(18, 18, 18)
@@ -619,7 +626,7 @@ public class ATMGUI extends javax.swing.JFrame {
                                 .addContainerGap())))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferAmountLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lanjutkanAmountTrfLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lanjutkanAmountTrfLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         transferAmountLayout.setVerticalGroup(
@@ -690,6 +697,13 @@ public class ATMGUI extends javax.swing.JFrame {
         jumlahLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jumlahLabel.setForeground(new java.awt.Color(255, 255, 255));
 
+        dataLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dataLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        dataLabel4.setText("BANK:");
+
+        bankNameField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        bankNameField.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout transferConfirmationLayout = new javax.swing.GroupLayout(transferConfirmation);
         transferConfirmation.setLayout(transferConfirmationLayout);
         transferConfirmationLayout.setHorizontalGroup(
@@ -700,18 +714,22 @@ public class ATMGUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tittleConfirmation)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferConfirmationLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cancelConfirmationLabe, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(dataTujuanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferConfirmationLayout.createSequentialGroup()
                                 .addGap(0, 156, Short.MAX_VALUE)
-                                .addComponent(processQuestionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(yesConfirmationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cancelConfirmationLabe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferConfirmationLayout.createSequentialGroup()
+                                        .addComponent(processQuestionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(yesConfirmationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(transferConfirmationLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(transferConfirmationLayout.createSequentialGroup()
+                                .addComponent(dataLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bankNameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(transferConfirmationLayout.createSequentialGroup()
                                 .addComponent(dataLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -732,9 +750,13 @@ public class ATMGUI extends javax.swing.JFrame {
             transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(transferConfirmationLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tittleConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tittleConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dataTujuanLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dataLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(bankNameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -744,10 +766,11 @@ public class ATMGUI extends javax.swing.JFrame {
                     .addComponent(dataLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(namaTujuanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prefixJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jumlahLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jumlahLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dataLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(prefixJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addGroup(transferConfirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yesConfirmationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -950,6 +973,75 @@ public class ATMGUI extends javax.swing.JFrame {
         );
 
         screen.add(kodeBankMenu, "kodeBankMenu");
+
+        withdrawalAmount.setBackground(new java.awt.Color(0, 51, 255));
+
+        titleTrfAmountLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        titleTrfAmountLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        titleTrfAmountLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleTrfAmountLabel1.setText("<html>MASUKKAN JUMLAH NOMINAL PENARIKAN<br/>LALU PILIH LANJUTKAN<br/>PILIH CANCEL UNTUK PEMBATALAN</html>");
+
+        withdrawalAmountField.setEditable(false);
+        withdrawalAmountField.setBackground(new java.awt.Color(0, 51, 255));
+        withdrawalAmountField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        withdrawalAmountField.setForeground(new java.awt.Color(255, 255, 255));
+        withdrawalAmountField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        currencyLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        currencyLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        currencyLabel1.setText("Rp. ");
+
+        cancelAmountTrfLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        cancelAmountTrfLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cancelAmountTrfLabel1.setText("CANCEL >>");
+
+        lanjutkanAmountTrfLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        lanjutkanAmountTrfLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lanjutkanAmountTrfLabel1.setText("LANJUTKAN >>");
+
+        javax.swing.GroupLayout withdrawalAmountLayout = new javax.swing.GroupLayout(withdrawalAmount);
+        withdrawalAmount.setLayout(withdrawalAmountLayout);
+        withdrawalAmountLayout.setHorizontalGroup(
+            withdrawalAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(withdrawalAmountLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(withdrawalAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawalAmountLayout.createSequentialGroup()
+                        .addComponent(titleTrfAmountLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawalAmountLayout.createSequentialGroup()
+                        .addGap(0, 42, Short.MAX_VALUE)
+                        .addGroup(withdrawalAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawalAmountLayout.createSequentialGroup()
+                                .addComponent(currencyLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(withdrawalAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawalAmountLayout.createSequentialGroup()
+                                .addComponent(cancelAmountTrfLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawalAmountLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lanjutkanAmountTrfLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        withdrawalAmountLayout.setVerticalGroup(
+            withdrawalAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(withdrawalAmountLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleTrfAmountLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addGroup(withdrawalAmountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(withdrawalAmountField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currencyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(lanjutkanAmountTrfLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cancelAmountTrfLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        screen.add(withdrawalAmount, "withdrawalAmount");
 
         numPad.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1372,6 +1464,12 @@ public class ATMGUI extends javax.swing.JFrame {
                 resetTextField();
                 changeScreen(MENU);
             break;
+            case TRANSFER_DIFFERENT_BANK:
+                changeScreen(TRANSFERAMOUNT);
+            break;
+            case WITHDRAWAL_AMOUNT:
+                performWithdrawal(Double.parseDouble(withdrawalAmountField.getText()));
+            break;
         }
     }//GEN-LAST:event_rightChooseBtn3ActionPerformed
 
@@ -1379,6 +1477,9 @@ public class ATMGUI extends javax.swing.JFrame {
         switch(atm.getScreen()){
             case TRANSFER_DIFFERENT_BANK:
                 showListBank();
+            break;
+            case PENARIKAN:
+                changeScreen(WITHDRAWAL_AMOUNT);
             break;
         }
     }//GEN-LAST:event_leftChooseBtn4ActionPerformed
@@ -1398,19 +1499,57 @@ public class ATMGUI extends javax.swing.JFrame {
     }
     
     private void transfer(){
-        int accountNumberReceiver = Integer.parseInt(noRekField.getText());
+        String noAccReceiverData = getDataAccountReceiverField();
+        
         double amount = Double.parseDouble(amountField.getText());
-        atm.createTransaction(atm.getCurrentBank().findAccount(accountNumberReceiver), amount);
+        if(noRekField.getText().length() != 0){
+            int accountNumberReceiver = Integer.parseInt(noAccReceiverData);
+            atm.createTransaction(atm.getCurrentBank().findAccount(accountNumberReceiver), amount);
+        }
+        else{
+            int bankCodeTransfer = Integer.parseInt(noAccReceiverData.substring(0, 3));
+            int accountNumTranfer = Integer.parseInt(noAccReceiverData.substring(3));
+            Account accountReceiver = atm.findAccount(bankCodeTransfer, accountNumTranfer);
+            atm.createTransaction(accountReceiver, amount);
+        }
         if(atm.performTransaction()){
-            String saldo = getDoubleAsText(atm.getCurrentAccount().getTotalBalance());
-            successMenuSaldoLabel.setText(saldo);
-            changeScreen(SUCCESS_MENU);
+            toSuccessMenu("TRANSAKSI BERHASIL");
+        }
+    }
+    
+    private void toSuccessMenu(String message){
+        successLabel.setText(message);
+        String saldo = getDoubleAsText(atm.getCurrentAccount().getTotalBalance());
+        successMenuSaldoLabel.setText(saldo);
+        changeScreen(SUCCESS_MENU);
+    }
+    
+    private String getDataAccountReceiverField(){
+        if(noRekField.getText().length() == 0){
+            return noRekDifBank.getText();
+        }
+        else{
+            return noRekField.getText();
         }
     }
     
     private void showDataTransfer(){
-        noAkunTujuanLabel.setText(noRekField.getText());
-        Account accountReceiver = atm.getCurrentBank().findAccount(Integer.parseInt(noRekField.getText()));
+        Account accountReceiver;
+        String noAccountReceiver = getDataAccountReceiverField();
+        String bankName;
+        if(noRekField.getText().length() != 0){
+            accountReceiver = atm.getCurrentBank().findAccount(Integer.parseInt(noAccountReceiver));
+            bankName = atm.getCurrentBank().getBankName();
+        }
+        else{
+            int bankCodeTransfer = Integer.parseInt(noAccountReceiver.substring(0, 3));
+            int accountNumTranfer = Integer.parseInt(noAccountReceiver.substring(3));
+            accountReceiver = atm.findAccount(bankCodeTransfer, accountNumTranfer);
+            noAccountReceiver = noAccountReceiver.substring(3);
+            bankName = (atm.findBank(bankCodeTransfer) == null ? "" : atm.findBank(bankCodeTransfer).getBankName());
+        }
+        bankNameField.setText(bankName);
+        noAkunTujuanLabel.setText(noAccountReceiver);
         String name = accountReceiver == null ? "" : accountReceiver.getName();
         namaTujuanLabel.setText(name);
         jumlahLabel.setText(amountField.getText());
@@ -1419,7 +1558,7 @@ public class ATMGUI extends javax.swing.JFrame {
     private void performWithdrawal(double amount){
         atm.createTransaction(amount);
         if(atm.performTransaction())
-            JOptionPane.showMessageDialog(this, "PENARIKAN BERHASIL\nSILAHKAN AMBIL UANG ANDA");
+            toSuccessMenu("PENARIKAN BERHASIL, SILAKKAN AMBIL UANG ANDA");
         else
             JOptionPane.showMessageDialog(this, "PENARIKAN GAGAL");
     }
@@ -1442,6 +1581,9 @@ public class ATMGUI extends javax.swing.JFrame {
             case TRANSFER_DIFFERENT_BANK:
                 textField = noRekDifBank;
             break;
+            case WITHDRAWAL_AMOUNT:
+                textField = withdrawalAmountField;
+            break;
         }
         String text = textField.getText();
         if(!input.equals("Delete"))
@@ -1452,7 +1594,7 @@ public class ATMGUI extends javax.swing.JFrame {
         textField.setText(text);
     }
     
-    public void login(){
+    private void login(){
         int accountNumber = Integer.parseInt(noAccTxtField.getText());
         char[] pinChar = pinField.getPassword();
         int pin = Integer.parseInt(new String(pinChar));
@@ -1464,39 +1606,44 @@ public class ATMGUI extends javax.swing.JFrame {
             }
             else{
                 //login failed bcs wrong pin
+                JOptionPane.showMessageDialog(this, "PIN SALAH");
+                logout();
             }
         }
         else{
             //login failed bcs no account found
+            JOptionPane.showMessageDialog(this, "NO AKUN TIDAK DITEMUKAN");
+            logout();
         }
     }
     
-    public void logout(){
+    private void logout(){
         resetTextField();
         atm.resetCurrentData();
         inputPin = false;
         changeScreen(LOGINMENU);
     }
     
-    public void resetTextField(){
+    private void resetTextField(){
         noAccTxtField.setText("");
         pinField.setText("");
         noRekField.setText("");
         amountField.setText("");
+        noRekDifBank.setText("");
     }
     
-    public void showSaldo(){
+    private void showSaldo(){
         String saldo = getDoubleAsText((atm.getCurrentAccount().getTotalBalance()));
         totalSaldoLabel.setText(saldo);
         changeScreen(INFOSALDO);
     }
     
-    public String getDoubleAsText(double val){
+    private String getDoubleAsText(double val){
         DecimalFormat df = new DecimalFormat("###,###,###.00");
         return df.format(val);
     }
     
-    public void changeScreen(String screenName){
+    private void changeScreen(String screenName){
         CardLayout card = (CardLayout) screen.getLayout();
         atm.setScreen(screenName);
         card.show(screen, screenName);
@@ -1539,7 +1686,9 @@ public class ATMGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amountField;
+    private javax.swing.JLabel bankNameField;
     private javax.swing.JLabel cancelAmountTrfLabel;
+    private javax.swing.JLabel cancelAmountTrfLabel1;
     private javax.swing.JLabel cancelConfirmationLabe;
     private javax.swing.JLabel cancelInfoSaldoLabel;
     private javax.swing.JLabel cancelLabel;
@@ -1550,9 +1699,11 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JLabel cancelSuccessLabel;
     private javax.swing.JLabel cancelTransferLabel;
     private javax.swing.JLabel currencyLabel;
+    private javax.swing.JLabel currencyLabel1;
     private javax.swing.JLabel dataLabel1;
     private javax.swing.JLabel dataLabel2;
     private javax.swing.JLabel dataLabel3;
+    private javax.swing.JLabel dataLabel4;
     private javax.swing.JLabel dataTujuanLabel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel differentBankLabel;
@@ -1577,6 +1728,7 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JLabel label500k;
     private javax.swing.JLabel labelNominal;
     private javax.swing.JLabel lanjutkanAmountTrfLabel;
+    private javax.swing.JLabel lanjutkanAmountTrfLabel1;
     private javax.swing.JLabel lanjutkanKodeBankLabel;
     private javax.swing.JLabel lanjutkanNoRekLabel;
     private javax.swing.JLabel lanjutkanNoRekLabel1;
@@ -1625,6 +1777,7 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JLabel titlePenarikan;
     private javax.swing.JLabel titleTransferDestLabel;
     private javax.swing.JLabel titleTrfAmountLabel;
+    private javax.swing.JLabel titleTrfAmountLabel1;
     private javax.swing.JLabel tittleConfirmation;
     private javax.swing.JLabel tittleInfoSaldoLabel;
     private javax.swing.JLabel tittleTranferNoRekLabel;
@@ -1637,6 +1790,8 @@ public class ATMGUI extends javax.swing.JFrame {
     private javax.swing.JLabel transferLabel;
     private javax.swing.JPanel transferNoRek;
     private javax.swing.JPanel transferNoRekDifBank;
+    private javax.swing.JPanel withdrawalAmount;
+    private javax.swing.JTextField withdrawalAmountField;
     private javax.swing.JLabel yaSuccessLabel;
     private javax.swing.JLabel yesConfirmationLabel;
     // End of variables declaration//GEN-END:variables

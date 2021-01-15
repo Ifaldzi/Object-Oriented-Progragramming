@@ -91,6 +91,19 @@ public class ATM {
         return null;
     }
     
+    public Account findAccount(int bankCode, int accountNumber){
+        for(Bank bank: banksData){
+            if(bank.getBankCode() == bankCode){
+                for(Account account: bank.getAccountsList()){
+                    if(account.getAccountNumber() == accountNumber){
+                        return account;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
     // this main method is for testing purpose
     public static void main(String[] args){
         ATM atm = new ATM();
@@ -113,7 +126,7 @@ public class ATM {
             writer.close();
         }
         catch(IOException exception){
-            
+            System.out.print("error");
         }
     }
     

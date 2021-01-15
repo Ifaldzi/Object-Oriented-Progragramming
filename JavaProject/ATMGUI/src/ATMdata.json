@@ -7,13 +7,13 @@
         "accountNumber": 999999,
         "pin": 123456,
         "name": "Bambang",
-        "totalBalance": 9650000.0
+        "totalBalance": 7725000.0
       },
       {
         "accountNumber": 888888,
         "pin": 123456,
         "name": "Icun",
-        "totalBalance": 350000.0
+        "totalBalance": 900000.0
       }
     ]
   },
@@ -25,6 +25,60 @@
         "accountNumber": 123456,
         "pin": 123456,
         "name": "Ifaldzi",
+        "totalBalance": 1500000.0
+      }
+    ]
+  },
+  {
+    "bankName": "BNA",
+    "bankCode": 300,
+    "accountsList": [
+      {
+        "accountNumber": 567123,
+        "pin": 654321,
+        "name": "Azu",
+        "totalBalance": 5000000.0
+      },
+      {
+        "accountNumber": 772211,
+        "pin": 632891,
+        "name": "Rin",
+        "totalBalance": 1.35E7
+      }
+    ]
+  },
+  {
+    "bankName": "Ame Bank",
+    "bankCode": 400,
+    "accountsList": [
+      {
+        "accountNumber": 790123,
+        "pin": 111111,
+        "name": "The One",
+        "totalBalance": 1.1111111E7
+      }
+    ]
+  },
+  {
+    "bankName": "Inaba Bank",
+    "bankCode": 500,
+    "accountsList": [
+      {
+        "accountNumber": 889977,
+        "pin": 321321,
+        "name": "Yu",
+        "totalBalance": 7.5E7
+      }
+    ]
+  },
+  {
+    "bankName": "Iwatodai Bank",
+    "bankCode": 600,
+    "accountsList": [
+      {
+        "accountNumber": 555555,
+        "pin": 666666,
+        "name": "Aegis",
         "totalBalance": 300000.0
       }
     ]
