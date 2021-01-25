@@ -1,3 +1,13 @@
+
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,6 +57,9 @@ public class FramePemesanan extends javax.swing.JFrame {
         dataPenjualanPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTextArea = new javax.swing.JTextArea();
+        saveButton = new javax.swing.JButton();
+        loadButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -190,20 +203,53 @@ public class FramePemesanan extends javax.swing.JFrame {
         dataTextArea.setRows(5);
         jScrollPane1.setViewportView(dataTextArea);
 
+        saveButton.setText("Simpan");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        loadButton.setText("Load Data");
+        loadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadButtonActionPerformed(evt);
+            }
+        });
+
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout dataPenjualanPanelLayout = new javax.swing.GroupLayout(dataPenjualanPanel);
         dataPenjualanPanel.setLayout(dataPenjualanPanelLayout);
         dataPenjualanPanelLayout.setHorizontalGroup(
             dataPenjualanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataPenjualanPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(dataPenjualanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addGroup(dataPenjualanPanelLayout.createSequentialGroup()
+                        .addComponent(saveButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(loadButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(resetButton)))
                 .addContainerGap())
         );
         dataPenjualanPanelLayout.setVerticalGroup(
             dataPenjualanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataPenjualanPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(dataPenjualanPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dataPenjualanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton)
+                    .addComponent(loadButton)
+                    .addComponent(resetButton))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -296,6 +342,99 @@ public class FramePemesanan extends javax.swing.JFrame {
         dataTextArea.setText(data);
     }//GEN-LAST:event_addOrderButtonActionPerformed
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        Customer customer = new Customer(customerNameField.getText(), addressField.getText(), phoneField.getText());
+        ArrayList<Menu> menus = new ArrayList<>();
+        if(steakCheckBox.isSelected()){
+            menus.add(new Menu(steakCheckBox.getText(), STEAKPRICE));
+        }
+        if(sphagetiCheckBox.isSelected()){
+            menus.add(new Menu(sphagetiCheckBox.getText(), SPHAGETIPRICE));
+        }
+        if(pizzaCheckBox.isSelected()){
+            menus.add(new Menu(pizzaCheckBox.getText(), PIZZAPRICE));
+        }
+        Menu[] cast = new Menu[menus.size()];
+        Order order = new Order(customer, menus.toArray(cast), Integer.parseInt(totalPayTextField.getText()));
+        ArrayList<Order> dataOrders = loadData();
+        try{
+            FileOutputStream fileStream = new FileOutputStream("src/Data Penjualan.ser");
+            ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
+            if(dataOrders != null){
+                for(Order data : dataOrders){
+                    objectStream.writeObject(data);
+                }
+            }
+            objectStream.writeObject(order);
+            objectStream.close();
+            fileStream.close();
+            JOptionPane.showMessageDialog(this, "Data Berhasi Disimpan");
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private ArrayList<Order> loadData(){
+        ArrayList<Order> dataOrders = new ArrayList<>();
+        try{
+            FileInputStream fileStream = new FileInputStream("src/Data Penjualan.ser");
+            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+            try{
+                while(true){
+                    dataOrders.add((Order)objectStream.readObject());
+                    
+                }
+            }
+            catch(EOFException endOfFileEx){
+                objectStream.close();
+                fileStream.close();
+                
+                return dataOrders;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
+        String data = "";
+        ArrayList<Order> ordersData = loadData();
+        if(ordersData == null){
+            return;
+        }
+        for(Order dataOrder : ordersData){
+            data += getDataOrderText(dataOrder) + "\n=================\n";
+        }
+        dataTextArea.setText(data);
+    }//GEN-LAST:event_loadButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        try{
+            FileOutputStream os = new FileOutputStream("src/Data Penjualan.ser");
+            os.close();
+            dataTextArea.setText("");
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_resetButtonActionPerformed
+
+    public String getDataOrderText(Order order){
+        String name = "Nama: " + order.getCustomer().getName() + "\n";
+        String address = "Alamat: " + order.getCustomer().getAddress() + "\n";
+        String phone = "Telp: " + order.getCustomer().getTelephone() + "\n";
+        
+        String data = name + address + phone + "=================\n";
+        for(int i=0;i<order.getMenus().length;i++){
+            data += "   - " + order.getMenus()[i].getName() + "\n";
+        }
+        data += "=================\n" + "Total Bayar:\n   RP. " + order.getTotal();
+        return data;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -343,8 +482,11 @@ public class FramePemesanan extends javax.swing.JFrame {
     private javax.swing.JLabel labelAddress;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPhone;
+    private javax.swing.JButton loadButton;
     private javax.swing.JTextField phoneField;
     private javax.swing.JCheckBox pizzaCheckBox;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JCheckBox sphagetiCheckBox;
     private javax.swing.JCheckBox steakCheckBox;
     private javax.swing.JLabel titleLabel;
